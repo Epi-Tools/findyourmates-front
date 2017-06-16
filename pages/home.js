@@ -1,17 +1,16 @@
 const html = require('choo/html')
+const searchInput = require('../elements/search-input')
 
-module.exports = function (state, prev, send) {
+module.exports = (state, prev, send) => {
+//<!--<h3>${state.title}</h3>-->
   return html`
     <main>
-      <h1>Hello, World!</h1>
-      <p>If you are seeing this, then the generator works!</p>
-      <h2>Demo</h2>
-      <h3>${state.title}</h3>
-      <input type="text" oninput=${update} />
+      <h1>Welcome to Find Your Mates</h1>
+      <p>You can find your mates in EPITECH Strasbourg</p>
+      <h2>Search a mates</h2>
+      <div>
+      ${searchInput(state, send)}
+      </div>
     </main>
   `
-
-  function update (e) {
-    send('update', { value: e.target.value })
-  }
 }
