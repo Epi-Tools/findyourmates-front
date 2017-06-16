@@ -8,7 +8,7 @@ const mates = (state, send) => html`
   <div onload=${() => send('fetchMates')}>
     <h4>List of Mates:</h4>
     <ul>
-      ${state.mates.map(e => html`<li>${e.name} - <em>${e.room}</em></li>`)}
+      ${state.filterMates.map(e => html`<li>${e.name} - <em>${e.room}</em></li>`)}
     </ul>
   </div>
 `
