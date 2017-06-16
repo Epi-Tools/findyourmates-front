@@ -7,7 +7,14 @@ const html = require('bel')
 const searchInput = (state, send) => {
   const update = e => send('update', { value: e.target.value })
 
-  return html`<input type="text" oninput=${update} />`
+  const search = () => console.log('search')
+
+  return html`
+  <div>
+    <input type="text" oninput=${update} placeholder="Search a mate"/>
+      <button onclick=${search}>SEARCH</button>
+  </div>
+  `
 }
 
 module.exports = searchInput
