@@ -26,6 +26,7 @@ module.exports = {
     },
     updateMates: (state, data) => {
       if (state.firstMates) return { mates: data, filterMates: data, firstMates: false }
+      if (JSON.stringify(state.mates) !== JSON.stringify(data)) return { mates: data, filterMates: data }
       return { mates: data }
     },
     search: (state, data) => {
@@ -38,7 +39,7 @@ module.exports = {
     // Triggered by actions, can call actions. Signature of (data, state, send, done)
     fetchMates: (data, state, send, done) => fetch('http://127.0.0.1:3000/api/mates')
       .then(resp => resp.json())
-      .then(body => send('updateMates', body.data, done))
+      .then(body => send('updateMates', body.data.mates, done))
   },
   subscriptions: {
     // asynchronous read-only operations that don't modify state directly.
